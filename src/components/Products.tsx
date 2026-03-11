@@ -1,0 +1,116 @@
+import {
+  TreePine,
+  Home,
+  DoorOpen,
+  Layers,
+  Grid3X3,
+  CookingPot,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+interface ProductCategory {
+  icon: LucideIcon;
+  title: string;
+  items: string[];
+}
+
+const categories: ProductCategory[] = [
+  {
+    icon: TreePine,
+    title: "Lumber & Boards",
+    items: [
+      "Lumber: Pressure-Treated, Doug Fir, Cedar, Mahogany, Spruce, Fire-Rated, Engineered & Laminated.",
+      "Boards: Eastern White Pine (Select & Premium), Idaho Pine, Primed Pine, Oak, Cherry, Maple, PVC Trim.",
+    ],
+  },
+  {
+    icon: Home,
+    title: "Decking & Porch",
+    items: [
+      "Materials: Pressure-Treated, Composite, Cedar, IPE, HDPE, PVC, Azek, LEED Certified & Recycled Material.",
+      "Brands: Moistureshield, Timbertech, Wolf, Azek, Sylvanix.",
+      "Railings: Vinyl, Aluminum, Wooden.",
+    ],
+  },
+  {
+    icon: DoorOpen,
+    title: "Doors & Windows",
+    items: [
+      "Doors: Interior & Exterior, Wooden, Fiberglass, Metal, Cellar (Gordon, Bilco), Patio, French, Storm (Larson), Solid/Hollow Core, Fire Ratings, Commercial Steel. Custom sizes available. Over 600 interior hollow doors in stock. Brands include Anderson, Thermatru, Masonite.",
+      "Windows: Insulated & Clear Glass Repair, Vinyl, Wood, Aluminum, New Construction, Replacement, Roof Windows. Brands include Silverline, Velux, Marvin Integrity, Jeld Wen.",
+    ],
+  },
+  {
+    icon: Layers,
+    title: "Mouldings & Stair Parts",
+    items: [
+      "Mouldings: Wood (any species, Pine stocked), Primed MDF, Flexible, Architectural, S4S, Red Oak, Polystyrene, Polyurethane. Brands include Azek, Spectis, Heritage, Accra, Garden State Lumber, Monteath.",
+      "Stair Parts: Treads, Risers, Stringers, Handrails, Balustrades, Spindles (wood/iron), Newels, Fittings.",
+    ],
+  },
+  {
+    icon: Grid3X3,
+    title: "Sheet Goods & Hardware",
+    items: [
+      "Sheet Goods: CDX Fir, AC Pine, Furniture-Grade (Oak, Birch, Cherry, Maple), Lauan, Pressure-Treated, Fire-Rated (In-Stock), MDF (Ultralite, Moisture-resistant, Flame-retardant), Particle Board, Melamine, Beadboard.",
+      "Hardware: Screws, nails (Pneumatic, Stainless, Galvanized), Concealed Fastener Systems (Proplug, Mantis, Cortex).",
+      "Fencing/Sheds: Cedar boards, PVC boards.",
+    ],
+  },
+  {
+    icon: CookingPot,
+    title: "Cabinets & Countertops",
+    items: [
+      "Cabinets: High-quality wooden kitchen cabinets and vanities (Parriott Wood).",
+      "Countertops: Formica, Corian, Granite, Silestone.",
+    ],
+  },
+];
+
+export default function Products() {
+  return (
+    <section id="products" className="bg-surface py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
+            Our Products
+          </h2>
+          <p className="mt-4 text-text-muted text-lg">
+            A comprehensive selection of building materials for every project.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <div
+                key={cat.title}
+                className="group rounded-2xl bg-bg p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold text-text-main">
+                    {cat.title}
+                  </h3>
+                </div>
+                <ul className="mt-5 space-y-3">
+                  {cat.items.map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-sm text-text-muted leading-relaxed"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
