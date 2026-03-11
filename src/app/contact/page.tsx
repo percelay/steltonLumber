@@ -38,7 +38,7 @@ export default function ContactPage() {
                 Piscataway, NJ 08854
               </p>
               <a
-                href="https://maps.google.com/?q=1354+Stelton+Road+Piscataway+NJ+08854"
+                href="https://www.google.com/maps?ll=40.539468,-74.42297&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=15884221423351625199"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors duration-200 hover:text-primary/80"

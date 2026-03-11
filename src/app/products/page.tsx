@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   TreePine,
   Home,
@@ -22,10 +23,17 @@ export const metadata: Metadata = {
   },
 };
 
+interface BrandLink {
+  name: string;
+  logo: string;
+  url: string;
+}
+
 interface ProductCategory {
   icon: LucideIcon;
   title: string;
   items: string[];
+  brands?: BrandLink[];
 }
 
 const categories: ProductCategory[] = [
@@ -53,6 +61,28 @@ const categories: ProductCategory[] = [
       "Doors: Interior & Exterior, Wooden, Fiberglass, Metal, Cellar (Gordon, Bilco), Patio, French, Storm (Larson), Solid/Hollow Core, Fire Ratings, Commercial Steel. Custom sizes available. Over 600 interior hollow doors in stock. Brands include Anderson, Thermatru, Masonite.",
       "Windows: Insulated & Clear Glass Repair, Vinyl, Wood, Aluminum, New Construction, Replacement, Roof Windows. Brands include Silverline, Velux, Marvin Integrity, Jeld Wen.",
     ],
+    brands: [
+      {
+        name: "Masonite",
+        logo: "/logos/masonite.svg",
+        url: "https://www.masonite.com/catalogs/",
+      },
+      {
+        name: "Therma-Tru",
+        logo: "/logos/therma-tru.svg",
+        url: "https://www.thermatru.com/explore-products/door-collections/",
+      },
+      {
+        name: "Gordon Cellar Doors",
+        logo: "/logos/gordon.svg",
+        url: "https://www.gordoncelladoor.com/",
+      },
+      {
+        name: "Larson Storm Doors",
+        logo: "/logos/larson.svg",
+        url: "https://www.larsondoors.com/storm-doors",
+      },
+    ],
   },
   {
     icon: Layers,
@@ -60,6 +90,23 @@ const categories: ProductCategory[] = [
     items: [
       "Mouldings: Wood (any species, Pine stocked), Primed MDF, Flexible, Architectural, S4S, Red Oak, Polystyrene, Polyurethane. Brands include Azek, Spectis, Heritage, Accra, Garden State Lumber, Monteath.",
       "Stair Parts: Treads, Risers, Stringers, Handrails, Balustrades, Spindles (wood/iron), Newels, Fittings.",
+    ],
+    brands: [
+      {
+        name: "Garden State Lumber",
+        logo: "/logos/garden-state-lumber.svg",
+        url: "https://www.gardenstatelumber.com/products-programs/stock-mouldings/",
+      },
+      {
+        name: "Monteath",
+        logo: "/logos/monteath.svg",
+        url: "https://www.monteath.com/moulding.html",
+      },
+      {
+        name: "Azek",
+        logo: "/logos/azek.svg",
+        url: "https://azekexteriors.com/products/moulding",
+      },
     ],
   },
   {
@@ -77,6 +124,13 @@ const categories: ProductCategory[] = [
     items: [
       "Cabinets: High-quality wooden kitchen cabinets and vanities (Parriott Wood).",
       "Countertops: Formica, Corian, Granite, Silestone.",
+    ],
+    brands: [
+      {
+        name: "Parriott Wood",
+        logo: "/logos/parriott-wood.svg",
+        url: "https://parriottwood.com",
+      },
     ],
   },
 ];
@@ -97,7 +151,7 @@ export default function ProductsPage() {
               return (
                 <div
                   key={cat.title}
-                  className="group rounded-2xl bg-bg p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                  className="group flex flex-col rounded-2xl bg-bg p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
@@ -107,7 +161,7 @@ export default function ProductsPage() {
                       {cat.title}
                     </h2>
                   </div>
-                  <ul className="mt-5 space-y-3">
+                  <ul className="mt-5 space-y-3 flex-1">
                     {cat.items.map((item, i) => (
                       <li
                         key={i}
@@ -117,6 +171,34 @@ export default function ProductsPage() {
                       </li>
                     ))}
                   </ul>
+
+                  {cat.brands && cat.brands.length > 0 && (
+                    <div className="mt-6 border-t border-surface pt-5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-text-muted/60 mb-3">
+                        Featured Brands
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3">
+                        {cat.brands.map((brand) => (
+                          <a
+                            key={brand.name}
+                            href={brand.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={brand.name}
+                            className="rounded-lg border border-surface bg-surface/50 p-2 transition-all duration-200 hover:border-primary/30 hover:shadow-sm grayscale hover:grayscale-0"
+                          >
+                            <Image
+                              src={brand.logo}
+                              alt={brand.name}
+                              width={100}
+                              height={28}
+                              className="h-7 w-auto"
+                            />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}

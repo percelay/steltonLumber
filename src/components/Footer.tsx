@@ -25,9 +25,14 @@ export default function Footer() {
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span className="text-sm text-white/80">
+                <a
+                  href="https://www.google.com/maps?ll=40.539468,-74.42297&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=15884221423351625199"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/80 transition-colors duration-200 hover:text-primary"
+                >
                   1354 Stelton Road, Piscataway, NJ 08854
-                </span>
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />

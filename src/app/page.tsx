@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import Reviews from "@/components/Reviews";
 import { ArrowRight, Scissors, Truck, DoorOpen, Fence } from "lucide-react";
 
 const serviceHighlights = [
@@ -129,6 +130,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Reviews />
 
       {/* CTA */}
       <section className="bg-bg py-16 sm:py-20">
