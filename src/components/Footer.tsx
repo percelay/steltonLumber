@@ -1,13 +1,16 @@
+import Link from "next/link";
 import { MapPin, Phone, Printer, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-text-main text-white">
+    <footer className="bg-text-main text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <h3 className="font-heading text-xl font-bold">Stelton Lumber</h3>
+            <Link href="/" className="font-heading text-xl font-bold hover:text-primary transition-colors duration-200">
+              Stelton Lumber
+            </Link>
             <p className="mt-4 text-sm text-white/60 leading-relaxed">
               Serving the Central New Jersey area for three generations with the
               highest quality products &amp; service since 1940.
@@ -65,18 +68,19 @@ export default function Footer() {
             </h4>
             <ul className="mt-4 space-y-3">
               {[
-                { label: "About", href: "#about" },
-                { label: "Services", href: "#services" },
-                { label: "Products", href: "#products" },
-                { label: "Service Areas", href: "#service-areas" },
+                { label: "About", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Products", href: "/products" },
+                { label: "Service Areas", href: "/service-areas" },
+                { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/60 transition-colors duration-200 hover:text-primary"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

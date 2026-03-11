@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   TreePine,
   Home,
@@ -7,6 +8,19 @@ import {
   CookingPot,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import CtaBanner from "@/components/CtaBanner";
+
+export const metadata: Metadata = {
+  title: "Products",
+  description:
+    "Lumber, boards, decking, doors, windows, mouldings, stair parts, sheet goods, hardware, cabinets, and countertops at Stelton Lumber.",
+  openGraph: {
+    title: "Products | Stelton Lumber Company Inc.",
+    description:
+      "Lumber, boards, decking, doors, windows, mouldings, stair parts, sheet goods, hardware, cabinets, and countertops at Stelton Lumber.",
+  },
+};
 
 interface ProductCategory {
   icon: LucideIcon;
@@ -67,50 +81,50 @@ const categories: ProductCategory[] = [
   },
 ];
 
-export default function Products() {
+export default function ProductsPage() {
   return (
-    <section id="products" className="bg-surface py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
-            Our Products
-          </h2>
-          <p className="mt-4 text-text-muted text-lg">
-            A comprehensive selection of building materials for every project.
-          </p>
-        </div>
+    <>
+      <PageHeader
+        title="Our Products"
+        description="A comprehensive selection of building materials for every project."
+      />
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
-            return (
-              <div
-                key={cat.title}
-                className="group rounded-2xl bg-bg p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
-                    <Icon className="h-6 w-6 text-primary" />
+      <section className="bg-surface py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <div
+                  key={cat.title}
+                  className="group rounded-2xl bg-bg p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h2 className="font-heading text-lg font-semibold text-text-main">
+                      {cat.title}
+                    </h2>
                   </div>
-                  <h3 className="font-heading text-lg font-semibold text-text-main">
-                    {cat.title}
-                  </h3>
+                  <ul className="mt-5 space-y-3">
+                    {cat.items.map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-text-muted leading-relaxed"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-5 space-y-3">
-                  {cat.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-text-muted leading-relaxed"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <CtaBanner />
+    </>
   );
 }

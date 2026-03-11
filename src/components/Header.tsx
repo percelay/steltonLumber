@@ -2,18 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Service Areas", href: "#service-areas" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
+  { label: "Service Areas", href: "/service-areas" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 bg-bg border-b border-surface shadow-sm">
@@ -29,13 +31,15 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-text-muted transition-colors duration-200 hover:text-primary"
+                className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                  pathname === link.href ? "text-primary" : "text-text-muted"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -48,12 +52,12 @@ export default function Header() {
               <Phone className="h-4 w-4" />
               732-985-1770
             </a>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -72,22 +76,24 @@ export default function Header() {
         <div className="md:hidden border-t border-surface bg-bg">
           <nav className="flex flex-col px-4 py-4 gap-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-text-muted transition-colors duration-200 hover:text-primary py-2"
+                className={`text-sm font-medium transition-colors duration-200 hover:text-primary py-2 ${
+                  pathname === link.href ? "text-primary" : "text-text-muted"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               Contact Us
-            </a>
+            </Link>
           </nav>
         </div>
       )}
