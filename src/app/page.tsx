@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import Reviews from "@/components/Reviews";
 import { ArrowRight, Scissors, Truck, DoorOpen, Fence } from "lucide-react";
@@ -27,27 +28,38 @@ export default function Home() {
       {/* About preview */}
       <section className="bg-surface py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
-              About Stelton Lumber
-            </h2>
-            <p className="mt-6 text-text-muted text-lg leading-relaxed">
-              Established in 1940 by Carmen J. Perrone, Stelton Lumber is a
-              family-owned and operated business servicing central Jersey for
-              over 83 years. We service commercial and industrial contractors,
-              home owners, and remodelers.
-            </p>
-            <p className="mt-4 text-text-muted text-lg leading-relaxed">
-              Our friendly, courteous, and knowledgeable staff is ready to help
-              you build on your ideas with competitive prices and expert advice.
-            </p>
-            <Link
-              href="/about"
-              className="mt-6 inline-flex items-center gap-2 text-primary font-semibold transition-colors duration-200 hover:text-primary/80"
-            >
-              Learn more about us
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            <div>
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
+                About Stelton Lumber
+              </h2>
+              <p className="mt-6 text-text-muted text-lg leading-relaxed">
+                Established in 1940 by Carmen J. Perrone, Stelton Lumber is a
+                family-owned and operated business servicing central Jersey for
+                over 83 years. We service commercial and industrial contractors,
+                home owners, and remodelers.
+              </p>
+              <p className="mt-4 text-text-muted text-lg leading-relaxed">
+                Our friendly, courteous, and knowledgeable staff is ready to help
+                you build on your ideas with competitive prices and expert advice.
+              </p>
+              <Link
+                href="/about"
+                className="mt-6 inline-flex items-center gap-2 text-primary font-semibold transition-colors duration-200 hover:text-primary/80"
+              >
+                Learn more about us
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-md">
+              <Image
+                src="/storefront.png"
+                alt="Stelton Lumber storefront"
+                width={800}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
