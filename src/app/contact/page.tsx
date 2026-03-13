@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, Printer, Clock, Navigation } from "lucide-react";
+import { MapPin, Phone, Printer, Clock, Navigation, Send } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -92,6 +93,22 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-bg py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
+                Send Us a Message
+              </h2>
+              <p className="mt-3 text-text-muted text-lg">
+                Have a question about a product or need a quote? Fill out the form below and we&apos;ll get back to you.
+              </p>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>

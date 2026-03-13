@@ -29,10 +29,15 @@ interface BrandLink {
   url: string;
 }
 
+interface SubSection {
+  label: string;
+  details: string[];
+}
+
 interface ProductCategory {
   icon: LucideIcon;
   title: string;
-  items: string[];
+  subsections: SubSection[];
   brands?: BrandLink[];
 }
 
@@ -40,26 +45,94 @@ const categories: ProductCategory[] = [
   {
     icon: TreePine,
     title: "Lumber & Boards",
-    items: [
-      "Lumber: Pressure-Treated, Doug Fir, Cedar, Mahogany, Spruce, Fire-Rated, Engineered & Laminated.",
-      "Boards: Eastern White Pine (Select & Premium), Idaho Pine, Primed Pine, Oak, Cherry, Maple, PVC Trim.",
+    subsections: [
+      {
+        label: "Lumber",
+        details: [
+          "Pressure-Treated",
+          "Doug Fir",
+          "Cedar",
+          "Mahogany",
+          "Spruce",
+          "Fire-Rated",
+          "Engineered & Laminated",
+        ],
+      },
+      {
+        label: "Boards",
+        details: [
+          "Eastern White Pine (Select & Premium)",
+          "Idaho Pine",
+          "Primed Pine",
+          "Oak",
+          "Cherry",
+          "Maple",
+          "PVC Trim",
+        ],
+      },
     ],
   },
   {
     icon: Home,
     title: "Decking & Porch",
-    items: [
-      "Materials: Pressure-Treated, Composite, Cedar, IPE, HDPE, PVC, Azek, LEED Certified & Recycled Material.",
-      "Brands: Moistureshield, Timbertech, Wolf, Azek, Sylvanix.",
-      "Railings: Vinyl, Aluminum, Wooden.",
+    subsections: [
+      {
+        label: "Materials",
+        details: [
+          "Pressure-Treated",
+          "Composite",
+          "Cedar",
+          "IPE",
+          "HDPE",
+          "PVC",
+          "Azek",
+          "LEED Certified & Recycled Material",
+        ],
+      },
+      {
+        label: "Brands",
+        details: [
+          "Moistureshield",
+          "Timbertech",
+          "Wolf",
+          "Azek",
+          "Sylvanix",
+        ],
+      },
+      {
+        label: "Railings",
+        details: ["Vinyl", "Aluminum", "Wooden"],
+      },
     ],
   },
   {
     icon: DoorOpen,
     title: "Doors & Windows",
-    items: [
-      "Doors: Interior & Exterior, Wooden, Fiberglass, Metal, Cellar (Gordon, Bilco), Patio, French, Storm (Larson), Solid/Hollow Core, Fire Ratings, Commercial Steel. Custom sizes available. Over 600 interior hollow doors in stock. Brands include Anderson, Thermatru, Masonite.",
-      "Windows: Insulated & Clear Glass Repair, Vinyl, Wood, Aluminum, New Construction, Replacement, Roof Windows. Brands include Silverline, Velux, Marvin Integrity, Jeld Wen.",
+    subsections: [
+      {
+        label: "Doors",
+        details: [
+          "Interior & Exterior",
+          "Wooden, Fiberglass, Metal",
+          "Cellar (Gordon, Bilco)",
+          "Patio & French",
+          "Storm (Larson)",
+          "Solid/Hollow Core",
+          "Fire Ratings & Commercial Steel",
+          "Custom sizes available",
+          "Over 600 interior hollow doors in stock",
+        ],
+      },
+      {
+        label: "Windows",
+        details: [
+          "Insulated & Clear Glass Repair",
+          "Vinyl, Wood, Aluminum",
+          "New Construction & Replacement",
+          "Roof Windows",
+          "Brands: Silverline, Velux, Marvin Integrity, Jeld Wen",
+        ],
+      },
     ],
     brands: [
       {
@@ -87,9 +160,26 @@ const categories: ProductCategory[] = [
   {
     icon: Layers,
     title: "Mouldings & Stair Parts",
-    items: [
-      "Mouldings: Wood (any species, Pine stocked), Primed MDF, Flexible, Architectural, S4S, Red Oak, Polystyrene, Polyurethane. Brands include Azek, Spectis, Heritage, Accra, Garden State Lumber, Monteath.",
-      "Stair Parts: Treads, Risers, Stringers, Handrails, Balustrades, Spindles (wood/iron), Newels, Fittings.",
+    subsections: [
+      {
+        label: "Mouldings",
+        details: [
+          "Wood (any species, Pine stocked)",
+          "Primed MDF",
+          "Flexible & Architectural",
+          "S4S & Red Oak",
+          "Polystyrene & Polyurethane",
+        ],
+      },
+      {
+        label: "Stair Parts",
+        details: [
+          "Treads, Risers, Stringers",
+          "Handrails & Balustrades",
+          "Spindles (wood/iron)",
+          "Newels & Fittings",
+        ],
+      },
     ],
     brands: [
       {
@@ -112,18 +202,46 @@ const categories: ProductCategory[] = [
   {
     icon: Grid3X3,
     title: "Sheet Goods & Hardware",
-    items: [
-      "Sheet Goods: CDX Fir, AC Pine, Furniture-Grade (Oak, Birch, Cherry, Maple), Lauan, Pressure-Treated, Fire-Rated (In-Stock), MDF (Ultralite, Moisture-resistant, Flame-retardant), Particle Board, Melamine, Beadboard.",
-      "Hardware: Screws, nails (Pneumatic, Stainless, Galvanized), Concealed Fastener Systems (Proplug, Mantis, Cortex).",
-      "Fencing/Sheds: Cedar boards, PVC boards.",
+    subsections: [
+      {
+        label: "Sheet Goods",
+        details: [
+          "CDX Fir & AC Pine",
+          "Furniture-Grade (Oak, Birch, Cherry, Maple)",
+          "Lauan & Pressure-Treated",
+          "Fire-Rated (In-Stock)",
+          "MDF (Ultralite, Moisture-resistant, Flame-retardant)",
+          "Particle Board, Melamine, Beadboard",
+        ],
+      },
+      {
+        label: "Hardware",
+        details: [
+          "Screws & Nails (Pneumatic, Stainless, Galvanized)",
+          "Concealed Fastener Systems (Proplug, Mantis, Cortex)",
+        ],
+      },
+      {
+        label: "Fencing & Sheds",
+        details: ["Cedar boards", "PVC boards"],
+      },
     ],
   },
   {
     icon: CookingPot,
     title: "Cabinets & Countertops",
-    items: [
-      "Cabinets: High-quality wooden kitchen cabinets and vanities (Parriott Wood).",
-      "Countertops: Formica, Corian, Granite, Silestone.",
+    subsections: [
+      {
+        label: "Cabinets",
+        details: [
+          "High-quality wooden kitchen cabinets",
+          "Vanities (Parriott Wood)",
+        ],
+      },
+      {
+        label: "Countertops",
+        details: ["Formica", "Corian", "Granite", "Silestone"],
+      },
     ],
     brands: [
       {
@@ -161,16 +279,27 @@ export default function ProductsPage() {
                       {cat.title}
                     </h2>
                   </div>
-                  <ul className="mt-5 space-y-3 flex-1">
-                    {cat.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-text-muted leading-relaxed"
-                      >
-                        {item}
-                      </li>
+
+                  <div className="mt-5 space-y-4 flex-1">
+                    {cat.subsections.map((sub) => (
+                      <div key={sub.label}>
+                        <h3 className="text-sm font-bold text-text-main mb-1.5">
+                          {sub.label}
+                        </h3>
+                        <ul className="space-y-1">
+                          {sub.details.map((detail, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start gap-2 text-sm text-text-muted leading-relaxed"
+                            >
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40" />
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
 
                   {cat.brands && cat.brands.length > 0 && (
                     <div className="mt-6 border-t border-surface pt-5">

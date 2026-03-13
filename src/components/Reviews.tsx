@@ -22,20 +22,11 @@ const reviews = [
   },
 ];
 
-function Stars({ rating }: { rating: number }) {
+function Stars({ count = 5 }: { count?: number }) {
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className={`h-5 w-5 ${
-            i < Math.floor(rating)
-              ? "fill-primary text-primary"
-              : i < rating
-                ? "fill-primary/50 text-primary"
-                : "text-text-muted/20"
-          }`}
-        />
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} className="h-5 w-5 fill-primary text-primary" />
       ))}
     </div>
   );
@@ -47,9 +38,9 @@ export default function Reviews() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-3">
-            <Stars rating={4.8} />
+            <Stars />
             <span className="font-heading text-2xl font-bold text-text-main">
-              4.8
+              5.0
             </span>
           </div>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-bold text-text-main">
@@ -66,7 +57,7 @@ export default function Reviews() {
               key={i}
               className="rounded-xl bg-bg p-6 shadow-sm"
             >
-              <Stars rating={5} />
+              <Stars />
               <p className="mt-4 text-text-muted leading-relaxed">
                 &ldquo;{review.text}&rdquo;
               </p>
