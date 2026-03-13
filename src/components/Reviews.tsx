@@ -22,12 +22,28 @@ const reviews = [
   },
 ];
 
-function Stars({ count = 5 }: { count?: number }) {
+function Stars({ rating = 5 }: { rating?: number }) {
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-      ))}
+      {Array.from({ length: 5 }).map((_, i) => {
+        if (i < Math.floor(rating)) {
+          // Full star
+          return <Star key={i} className="h-5 w-5 fill-primary text-primary" />;
+        }
+        if (i < rating) {
+          // Half star — clip the fill to 50%
+          return (
+            <span key={i} className="relative h-5 w-5">
+              <Star className="absolute inset-0 h-5 w-5 text-primary" />
+              <span className="absolute inset-0 overflow-hidden w-[50%]">
+                <Star className="h-5 w-5 fill-primary text-primary" />
+              </span>
+            </span>
+          );
+        }
+        // Empty star
+        return <Star key={i} className="h-5 w-5 text-text-muted/20" />;
+      })}
     </div>
   );
 }
@@ -38,9 +54,9 @@ export default function Reviews() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-3">
-            <Stars />
+            <Stars rating={4.5} />
             <span className="font-heading text-2xl font-bold text-text-main">
-              5.0
+              4.5
             </span>
           </div>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-bold text-text-main">
