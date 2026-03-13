@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Building2, Users, Calendar } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CtaBanner from "@/components/CtaBanner";
@@ -41,6 +42,17 @@ export default function AboutPage() {
                 Our friendly, courteous, and knowledgeable staff is ready to help
                 you build on your ideas with competitive prices and expert advice.
               </p>
+
+              <div className="mt-10 overflow-hidden rounded-2xl shadow-md">
+                <Image
+                  src="/storefront.png"
+                  alt="Stelton Lumber storefront"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">

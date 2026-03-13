@@ -99,16 +99,38 @@ export default function ContactPage() {
 
       <section className="bg-bg py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl">
-            <div className="text-center mb-12">
+          <div className="grid gap-12 lg:grid-cols-2 items-start">
+            <div>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
                 Send Us a Message
               </h2>
-              <p className="mt-3 text-text-muted text-lg">
+              <p className="mt-3 text-text-muted text-lg mb-10">
                 Have a question about a product or need a quote? Fill out the form below and we&apos;ll get back to you.
               </p>
+              <ContactForm />
             </div>
-            <ContactForm />
+
+            <div>
+              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-main">
+                Find Us
+              </h2>
+              <p className="mt-3 text-text-muted text-lg mb-10">
+                1354 Stelton Road, Piscataway, NJ 08854
+              </p>
+              <div className="overflow-hidden rounded-2xl shadow-md">
+                <iframe
+                  title="Stelton Lumber location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.5!2d-74.42297!3d40.539468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c7f61cdca3cb%3A0xdc701739f085f5ef!2sStelton%20Lumber%20Co!5e0!3m2!1sen!2sus!4v1710000000000"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
